@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 export default function Login() {
-  const [username, setUsername] = useState(""); // controlled username field
-  const [password, setPassword] = useState(""); // controlled password field
-  const [message, setMessage] = useState("");
+  const [username, setUsername] = useState(""); // username field
+  const [password, setPassword] = useState(""); // password field
+  // all 3 work the same as signup
+  const [message, setMessage] = useState(""); 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -19,14 +20,13 @@ export default function Login() {
 
     setLoading(true);
     try {
-      // Credentials -> Express login endpoint
       const response = await fetch("http://localhost:9000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
       });
-      const data = await response.json();
-      setError(!response.ok); // server status -> success/failure
+      const data = await response.json(); // wait for server's http response
+      setError(!response.ok); // read only boolean checking whether it was ok, set error to opposite of that (if ok, setError will be false, etc.)
       setMessage(data.message);
       // Successful login -> message stays on this page
     } catch {

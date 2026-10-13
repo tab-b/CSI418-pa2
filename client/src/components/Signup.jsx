@@ -3,10 +3,12 @@ import { useState } from "react";
 const emptyForm = { f_name: "", l_name: "", username: "", password: "" };
 
 export default function Signup() {
-  const [form, setForm] = useState(emptyForm); // four input values in React state
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // how react remembers information and updates the interface
+  // four input values in React state
+  const [form, setForm] = useState(emptyForm); // used to hold first name, last name, username, and pass
+  const [message, setMessage] = useState(""); // response used for error handling e.g. "account created successfully"
+  const [error, setError] = useState(false); // boolean for whether operation failed. true means failed, false means succeeded
+  const [loading, setLoading] = useState(false); // tracks whether a request to the Express backend is in progress
 
   function updateField(event) {
     const { name, value } = event.target;

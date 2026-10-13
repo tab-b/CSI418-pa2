@@ -5,7 +5,7 @@ import authRoutes from "./routes/auth.js";
 export function createApp(users) {
   const app = express();
   app.use(cors()); // React 5173 -> Express 9000
-  app.use(express.json()); // JSON request -> req.body
+  app.use(express.json()); // req.body must be JSON
   app.use(authRoutes(users)); // POST /signup and POST /login
 
   app.use((error, req, res, next) => {

@@ -10,7 +10,7 @@ async function start() {
 
   const client = new MongoClient(process.env.MONGO_URI, { serverSelectionTimeoutMS: 5000 });
   await client.connect(); // Express backend -> MongoDB Atlas or local database
-  const db = client.db("pa2"); // database shown in instructions
+  const db = client.db("pa2"); 
   const users = db.collection("users"); // MongoDB collection
   await users.createIndex({ username: 1 }, { unique: true }); // enforce unique usernames
 

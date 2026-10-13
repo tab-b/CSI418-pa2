@@ -3,7 +3,7 @@ import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 
 export default function App() {
-  const [mode, setMode] = useState("signup"); // switch Signup / Login
+  const [mode, setMode] = useState("signup"); // switch Signup / Login GUIs
 
   return (
     <main className="shell">
