@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export default function Login() {
+export default function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState(""); // username field
   const [password, setPassword] = useState(""); // password field
   // all 3 work the same as signup
-  const [message, setMessage] = useState(""); 
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -29,6 +29,7 @@ export default function Login() {
       setError(!response.ok); // read only boolean checking whether it was ok, set error to opposite of that (if ok, setError will be false, etc.)
       setMessage(data.message);
       // Successful login -> message stays on this page
+      if(response.ok) onLoginSuccess(); // successful login then projects
     } catch {
       setError(true);
       setMessage("Could not connect to the server.");
